@@ -39,7 +39,7 @@ class _CalcState extends State<Calc> {
         ans =
             (amt - 2130) * 0.0023 + 130 * 0.0033 + 750 * 0.0055 + 1250 * 0.0067;
       }
-    } else {
+    } else if(group==2){
       if (amt <= 2400) {
         ans = amt * 0.0035;
       } else if (amt > 2400 && amt <= 2400 + 1450) {
@@ -47,6 +47,18 @@ class _CalcState extends State<Calc> {
       } else {
         ans = (amt - 3850) * 0.0023 + 1450 * 0.0029 + 2400 * 0.0035;
       }
+    }else if(group==3){
+        ans = amt * 0.0023;
+    }else if(group==4){
+        ans = amt * 0.0018;
+    }else if(group==5){
+        ans = amt * 0.0015;
+    }else if(group==6){
+        ans = amt * 0.0010;
+    }else if(group==7){
+        ans = amt * 0.0008;
+    }else if(group==8){
+        ans = amt * 0.0006;
     }
 
     setState(() {
@@ -124,7 +136,7 @@ class _CalcState extends State<Calc> {
               Wrap(
                 spacing: 5.0,
                 children: List<Widget>.generate(
-                  2,
+                  8,
                   (int index) {
                     return ChoiceChip(
                       label: Text('Group ${index + 1}'),
@@ -146,14 +158,14 @@ class _CalcState extends State<Calc> {
                   child: const Text('Submit'),
                 ),
               ),
-              const Text("Result: ",
+              const Text("DR per Slab: ",
                   style: TextStyle(fontSize: 18, letterSpacing: 0.8)),
               Text(
                 result,
                 style: const TextStyle(fontSize: 20, letterSpacing: 1.2),
               ),
               const SizedBox(height: 10.0),
-              const Text("Slab: ",
+              const Text("DR payable: ",
                   style: TextStyle(fontSize: 18, letterSpacing: 0.8)),
               Text(
                 slabResult,
