@@ -16,13 +16,16 @@ jobs:
 
       - name: Enable Flutter
         run: flutter --version
+
+      - name: Clean project
+        run: flutter clean
       
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
-
+        run: flutter build apk --release --no-tree-shake-icons
+      
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
